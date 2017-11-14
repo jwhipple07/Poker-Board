@@ -1,0 +1,88 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.card{
+    display:inline-block;
+    height:200px;
+    width:150px;
+    border:1px solid black;
+    margin:5px;
+}
+.card:hover {
+    background-color:#eeeeee;
+    cursor:pointer;
+}
+.card .centerChoice{
+    border:1px solid grey;
+    padding:50px 0px;
+    margin:25px 20px;
+    height:150px;
+    max-height:150px;
+    font-size: 30px;
+    text-align:center;
+}
+
+.Active{
+    background-color:dodgerblue;
+}
+.Active:hover{
+    background-color:cornflowerblue;
+}
+
+.disable{
+    background-color:lightgray;
+}
+
+.User_info {
+    width:100%;
+}
+.Name{
+    float:left;
+    width:80%;
+}
+.Vote{
+    float:right;
+    width:20%;
+}
+
+.add{
+    background-color:green!important;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+.add:hover{
+    background-color:lightgreen!important;
+}
+.delete{
+    background-color:red!important;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+.delete:hover{
+    background-color:lightcoral!important;
+}

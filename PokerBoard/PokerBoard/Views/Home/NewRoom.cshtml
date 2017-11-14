@@ -1,0 +1,105 @@
+﻿@model PokerBoard.Models.RoomModel
+
+@{
+    ViewBag.Title = "NewRoom";
+}
+
+<h2>NewRoom</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>RoomModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.RoomID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.RoomID)
+                @Html.ValidationMessageFor(model => model.RoomID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoomName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoomName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModeratorPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ModeratorPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ModeratorPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div id="storyInfo" class="form-group">
+            @Html.LabelFor(model => model.Stories, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <table id="storyTable" class="table table-responsive">
+
+                    @for (int i = 0; i < Model.Stories.Count; i++)
+                {
+                        <tr class="story-count">
+                            <td>
+                                @Html.EditorFor(model => model.Stories[i].storyName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Stories[i].storyName, "", new { @class = "text-danger" })
+                            </td>
+                            <td>
+                                <div onclick="AddStoryRow(this)">+</div>
+                                <div onclick="RemoveStoryRow(this)">X</div>
+                            </td>
+                        </tr>
+
+                    }
+                    <tr class="col-md-2"><td><button class="btn btn-info" id="addANewStory">+</button></td></tr>
+                </table>
+            </div>
+        </div>
+        <div id="cardInfo" class="form-group">
+            @Html.LabelFor(model => model.cards, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <table id="cardTable" class="table table-responsive">
+
+                    @for (int i = 0; i < Model.cards.Count; i++)
+                {
+                        <tr class="card-count">
+                            <td>
+                                @Html.EditorFor(model => model.cards[i], new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.cards[i], "", new { @class = "text-danger" })
+                            </td>
+                            <td>
+                                <div onclick="AddCardRow(this)">+</div>
+                                <div onclick="RemoveCardRow(this)">X</div>
+                            </td>
+                        </tr>
+
+                    }
+                    <tr class="col-md-2"><td><button class="btn btn-info" id="addANewCard">+</button></td></tr>
+                </table>
+            </div>
+
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section scripts{ 
+
+<script src="~/Scripts/custom/newRoom.js"></script>
+}
